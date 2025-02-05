@@ -1,0 +1,19 @@
+#version 330 core
+
+layout (location=0) in vec3 vertexPos;
+layout (location=1) in vec2 vertexTexPos;
+
+
+
+out vec2 fragmentTexCoord;
+
+uniform mat4 projectionMatrix;
+uniform mat4 modelMatrix;
+uniform mat4 viewMatrix;
+uniform mat4 lookatMatrix;
+
+void main()
+{
+  gl_Position = projectionMatrix  * lookatMatrix * modelMatrix  * vec4(vertexPos, 1.0);
+  fragmentTexCoord = vertexTexPos;
+}
